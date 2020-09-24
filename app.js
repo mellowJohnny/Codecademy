@@ -1,62 +1,60 @@
 
 // -------------------------------- Lucky Numbers! -------------------------------
 
-let howManyNumbers;
-let randomNumber;
-let numArray = new Array();
+const howManyNumbers = 7;  // The number of Lucky Numbers to generate
+const howManyPicks = 49;  // The "size" of the lottery pool
+let randomNumber;  // A single random-ish 'Lucky Number'
+let numSet = new Set();  // a Set to hold the Lucky Numbers
+let setBuilderCalls = 1;  // Keep track of how many times the setBuilder() function is called
+
+// Run the programme...
+luckyNumbers(howManyNumbers);
 
 // Our Main Function call:
 function luckyNumbers(howManyNumbers){
-    // Used to indicate the array is "full" and we can print the numbers
-    const whenToStop = howManyNumbers - 1; 
     var i;
     i = howManyNumbers;
     for (i = 0; i < howManyNumbers; i++){
-        randomNumber = Math.round(Math.random() * 49);
-        arrayBuilder(randomNumber, whenToStop);
+        randomNumber = Math.round(Math.random() * howManyPicks);
+        setBuilder(randomNumber, howManyNumbers);
+        setBuilderCalls += 1; // Counter to know how many times we've looped.
     }
-} // end luckyNumbers
+}
 
-// This helper function is called from the luckyNumbers loop, which passes in a random number 'howManyNumbers' of times
-function arrayBuilder(number, total){
+// Helper function to generate randon-ish numbers
+function setBuilder(number, total){
+    /*  Build a Set containing our random numbers  
+        The numbers must be unique (hence the Set), and cannot be 0
+        If the number is not 0, add it to the Set.  If it is, add 1 instead */ 
+    number != 0 ? numSet.add(number) : numSet.add(1); 
 
-// First, build an array with our random numbers, changing a 0 to a 1 if we find any
-    number != 0 ? numArray.push(number) : numArray.push(1); 
-
-// When the array is = to howManyNumbers -1 (arrays start at 0), print the whole Array
-    if (numArray.length > total) {
-        // Before printing, check the whole array for any duplicates...
-        if (checkForDupes(numArray)){
-            // Duplicates!
-            console.log("Array has duplicates...re-run it");
-            return 
+    /*  Check if the setBuilderCalls counter equals our howManyNumber - if so, Loop is finished
+        If the loop is done, check the size of the Set 
+        If it is the same as our total, we have no duplicates, and it's safe to print the numbers */
+    if (setBuilderCalls == total) {
+        if(numSet.size == total){
+            print(numSet); // Set is full, no duplicates - let's print!
         }
         else{
-            // Print out the array
-            numArray.forEach(function(item, index, array) {
-            console.log(item)
-          })
+            // Set.size != howManyNumbers: we have duplicates!
+           // let numOfDupes = setBuilderCalls - numSet.size;
+           // console.log(`Looks like we had ${numOfDupes} duplicates...running again...`);
+            luckyNumbers(howManyNumbers);
         }
-        
-    }
-} // end arrayBuilder
+    }    
+} // end setBuilder
 
-// arrayBuilder helper function to check for duplicates
-// argument accepts the array you want to check
-function checkForDupes(array){
-    return new Set(array).size != array.length
+/*  Print & Sort Function:
+    Takes the Set from setBuilder();, converts it to an Array, sorts it, and prints it */
 
-} // end checkForDupes
-
-function checkForDupes2(array){
-    var i;
-    for (i = 0; i < array.length; i++){
-        // Check for duplicates
-    }
-
-} // end checkForDupes2
-
-luckyNumbers(6);
+function print(mySet){
+    let numArray = Array.from(mySet)  // Convert the Set to an Array so we can sort it
+    numArray.sort(function(a, b){return a-b});  // Then sort the Array by increasing order
+    console.log(`Your ${howManyNumbers} Lucky Numbers are: `);  // Print it
+    numArray.forEach(function(item, index, array) {
+        console.log(item)
+      })
+}
 
 
 
