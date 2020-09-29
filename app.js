@@ -21,7 +21,7 @@ function luckyNumbers(howManyNumbers){
     }
 }
 
-// Helper function to generate randon-ish numbers
+// Helper function to generate random-ish numbers
 function setBuilder(number, total){
     /*  Build a Set containing our random numbers  
         The numbers must be unique (hence the Set), and cannot be 0
