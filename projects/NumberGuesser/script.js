@@ -6,7 +6,7 @@
 // Set Up Some Variables:
 let humanScore = 0;
 let computerScore = 0;
-let currentRoundNumber = 0;
+let currentRoundNumber = 1;
 
 // Funuction to generate a random number between 0 and 9
 // This is the number we are trying to guess...
@@ -50,13 +50,4 @@ const updateScore = winner => {
 // Concise arrow function :-)
 const advanceRound = () => currentRoundNumber = currentRoundNumber +1;
 
-/* OLD
-const advanceRound = () => {
-    currentRoundNumber = currentRoundNumber +1;
-    return currentRoundNumber;
-}
-*/
 
-
-console.log(compareGuesses(5,4,8));
-console.log(advanceRound());
