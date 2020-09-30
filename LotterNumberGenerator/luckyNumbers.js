@@ -1,7 +1,7 @@
 
 // -------------------------------- Lucky Numbers! -------------------------------
 // Set up the hardcoded lottery parameters:
-const lotteryName = 'Lotto 6/49';
+const lotteryName = 'Lotto 6/49';  // Lottery Name
 const howManyPicks = 6;  // The number of picks to generate
 const lotterySize = 49;  // The pool size of the lottery
 
