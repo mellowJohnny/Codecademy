@@ -62,7 +62,7 @@ function findInvalidCards(cardBatch){
        // Then push the bad card number Array to the invalidCards Array
        if (!validateCred(cardBatch[i])){
             badCard = cardBatch[i];  
-            console.log(`Bad Card: ${badCard}`);
+            // console.log(`Bad Card: ${badCard}`);  Print out each bad card we find....
             invalidCards.push(badCard); 
         }
     } 
