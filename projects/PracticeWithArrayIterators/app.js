@@ -45,5 +45,30 @@ animals.map(arrayPrinter);
 // We set it equal to foo.  foo is now a new Array
 const foo = animals.map(arrayPrinter); 
 
-// DEBUG: To prove foo is holding an array, print it...
+// Prove foo is holding an array, print it...
 console.log(foo); 
+
+// ----------------------- Example 3 
+// Use an arrow function with the map(); call to do the work we need
+// Useful, but not as modular as defining the function outside of the map(); call
+// and being able to use it anywhere...not just in one instance
+animals.map(animal => console.log(`The animal is: ${animal}`));
+
+// ----------------------- Example 4
+// Similar to the above, but the arrow function does some work (multiplying numbers) 
+// This work is then returned by the map() function as a new Array (bigNumbers)
+// We can then do something with that new Array :-)
+
+const numbers = [10, 20, 30, 40, 50];
+// Create a new variable to hold the "big number" Array we are just about to return
+// We need curly braces to hold the body of the function we are building on the fly
+// 'number' is used by the map() function to hold the current element in the Array
+// NOTES: 
+//       1) 'number' is the name of the *parameter* in the callback function, NOT IT'S NAME!  They are ANONYMOUS
+//       2) without the 'return' keyword nothing gets passed back to the Array!
+const bigNumbers = numbers.map(number => {return number * 100;});
+console.log(bigNumbers);
+
+// We could have also created a standalone function called multiplyer(); which did the 
+// math we wanted to do, and then pass it in as the callback to the map() function
+// Much more modular that way...
