@@ -49,22 +49,24 @@ const inventory = {
 * Exercise 3 - handling success & failure
 */
 
-  const {checkInventory} = require('./library.js');
+const {checkInventory} = require('./library.js');
 
-  const order = [['sunglasses', 1], ['bags', 2]];
-  
-  // Write your code below:
-  
-  // Here's what we do on Success and on Failure:
-  const handleSuccess = (resolvedValue) => {
-    console.log(resolvedValue);
-  };
-  
-  const handleFailure = (resolvedValue) => {
-    console.log(resolvedValue);
-  };
-  
-  // checkInventory() returns a Promise Object.  
-  // Since calling the function returns a Promise Object, we can call .then() all on one line, at the same time
-  // The resolve / reject code is in the library.js module we imported...
-  checkInventory(order).then(handleSuccess,handleFailure);
+const order = [['sunglasses', 1], ['bags', 2]];
+
+// Write your code below:
+
+// Here's what we do on Success and on Failure:
+// Remeber, when resolve is the result, we are successful - the resove() in the library.js is what passed in the message we see.  That's becasue resolve() detremines what happens on success
+const handleSuccess = (success) => {
+  console.log(success);
+};
+
+// And when reject is the result, we have a failure - the reject() in the library.js is what passed in the message we see.  That's becasue reject() detremines what happens on a failure
+const handleFailure = (failure) => {
+  console.log(failure);
+};
+
+// checkInventory returns a Promise Object.  Since calling the function returns a Promise Object, we can call .then() all on one line, at the same tim
+checkInventory(order).then(handleSuccess,handleFailure);
+
+
