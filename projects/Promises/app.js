@@ -1,3 +1,5 @@
+
+
 /**
  * Exercise 1 - Basic Promise
  */
@@ -70,3 +72,35 @@ const handleFailure = (failure) => {
 checkInventory(order).then(handleSuccess,handleFailure);
 
 
+// Example of using catch() to catch error conditions.  
+prom.then((resolvedValue) => {console.log(resolvedValue);}).catch((rejectionReason) => {console.log(rejectionReason);});
+
+/**
+ * Normally it's written in multiple lines to improve readability
+ * We pass a success handler to .then() and a failure handler to .catch().
+ * If the promise resolves, .then()‘s success handler will be invoked with 'Yay!'.
+ * If the promise rejects, .then() will return a promise with the same rejection 
+ * reason as the original promise and .catch()‘s failure handler will be invoked with that rejection reason.
+ */
+prom
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+
+  // Simple example: checkInventory() returns a Promise, allowing us to call .then() and catch() on the Object
+  checkInventory(order).then(handleSuccess).catch(handleFailure);
+
+
+  checkInventory(order)
+    .then((resolvedValueArray) => {
+        return processPayment(resolvedValueArray)})
+    .then((resolvedValueArray) => {
+        return shipOrder(resolvedValueArray)
+        })
+    .then((successMessage) => {
+        return console.log(successMessage);
+            });
+      
