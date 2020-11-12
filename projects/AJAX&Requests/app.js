@@ -1,4 +1,4 @@
-// AJAX!  --  Boilerplate AJAX code --
+// AJAX!  --  Boilerplate GET AJAX code --
 
 const xhr = new XMLHttpRequest();
 const url = 'https://api-to-call.com/endpoint';
@@ -17,3 +17,23 @@ xhr.onreadystatechange = () => {
 xhr.open('GET',url);
 
 xhr.send();
+
+// -----------------------------------------------------------------------
+
+// XML -----  POST Boilerplate code...
+const xhr = new XMLHttpRequest();
+const url = 'https://api-to-call.com/endpoint';
+
+// This will take a JSON object and convert it to a string so we can send it as the payload
+const data = JSON.stringify({id: '200'});
+
+xhr.responseType = 'json';
+
+xhr.onreadystatechange = () => {
+  if (xhr.readyState === XMLHttpRequest.DONE){
+    return xhr.response;
+  }
+}
+
+xhr.open('POST', url);
+xhr.send(data);
