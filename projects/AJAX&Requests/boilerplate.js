@@ -106,6 +106,20 @@ fetch('https://api-to-call.com/endpoint')
         //    We use the second then() to call a second anon arrow function which cleans up the raw JSON object
         //    by calling a custom function
   }
+
+  const shortenUrl = () => {
+    const urlToShorten = inputField.value;
+    const data = JSON.stringify({destination: urlToShorten});
+    // Call fetch()
+    fetch(url, {method: 'POST'
+                headers: {'Content-type':'application/json','apikey': apiKey}
+  });
+  }
+  const getSuggestions = async () => {
+    const wordQuery = inputField.value;
+    const endpoint = `${url} ${queryParams} ${endpoint}`;
+  };
+  
   
 
   
