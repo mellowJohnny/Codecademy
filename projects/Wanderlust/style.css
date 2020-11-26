@@ -70,7 +70,7 @@
   }
   
   .weather {
-    width: 200px;
+    width: 270px;
     height: 260px;
     padding: 20px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -82,7 +82,7 @@
   }
   
   .venue {
-    width: 275px;
+    width: 300px;
     padding: 20px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   }

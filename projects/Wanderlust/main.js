@@ -12,7 +12,7 @@ const $input = $('#city');
 const $submit = $('#button');
 const $destination = $('#destination');
 const $container = $('.container');
-const $venueDivs = [$("#venue1"), $("#venue2"), $("#venue3"), $("#venue4")];
+const $venueDivs = [$("#venue1"), $("#venue2"), $("#venue3"), $("#venue4"), $("#venue5", $("#venue6"))];
 const $weatherDiv = $("#weather1");
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -28,21 +28,62 @@ const createVenueHTML = (name, location, iconSource) => {
   
   // Call Celsius or Farenheit...hard coded :-(
   const createWeatherHTML = (currentDay) => {
-    console.log(currentDay)
+    // Set up some temprature variables we need...rounding them to a single digit
+    const currentTemp = (currentDay.main.temp).toFixed(0);
+    const minTemp = (currentDay.main.temp_min).toFixed(0);
+    const maxTemp = (currentDay.main.temp_max).toFixed(0);
+    // Convert wind direction from degrees to a compass point 
+    // Convert String degrees to Number, then compare it... 
+    const degNumber = parseInt(currentDay.wind.deg);
+    const degreesToRose =  degNumber => {
+        if (degNumber >= 0 && degNumber <= 29){
+            return 'North';
+        }
+        else if (degNumber >= 30 && degNumber <= 59){
+            return 'North East';
+        }
+        else if (degNumber >= 60 && degNumber <= 119){
+            return 'East';
+        }
+        else if (degNumber >= 120 && degNumber <= 149){
+            return 'South East';
+        }
+        else if (degNumber >= 150 && degNumber <= 209){
+            return 'South';
+        }
+        else if (degNumber >= 210 && degNumber <= 239){
+            return 'South West';
+        }
+        else if (degNumber >= 240 && degNumber <= 299){
+            return 'West';
+        }
+        else if (degNumber >= 300 && degNumber <= 329){
+            return 'North West';
+        }
+        else if (degNumber >= 330 && degNumber <= 360){
+            return 'North';
+        }      
+      };
     return `<h2>${weekDays[(new Date()).getDay()]}</h2>
-          <h2>Temperature: ${kelvinToCelsius(currentDay.main.temp)}&deg;C</h2>
+          <h2>Temperature: ${currentTemp}&deg;C</h2>
+          <h2>Low: ${minTemp}&deg;C</h2>
+          <h2>High: ${maxTemp}&deg;C</h2>
           <h2>Condition: ${currentDay.weather[0].description}</h2>
+          <h2>Wind Speed: ${currentDay.wind.speed} km/h</h2>
+          <h2>Wind Direction: ${degreesToRose(degNumber)} </h2>
+          <h2>Visibility: ${currentDay.visibility} km</h2>
         <img src="https://openweathermap.org/img/wn/${currentDay.weather[0].icon}@2x.png">`;
   }
   
-  const kelvinToFahrenheit = k => ((k - 273.15) * 9 / 5 + 32).toFixed(0);
-  const kelvinToCelsius = k => (k - 273.15).toFixed(0);
+ // const kelvinToFahrenheit = k => ((k - 273.15) * 9 / 5 + 32).toFixed(0);
+  // const kelvinToCelsius = k => (k - 273.15).toFixed(0);
+  
   // ------------------------------------------ End Helper Functions -------------------------
 
 // Add AJAX functions here:
 const getVenues = async () => {
   const city = $input.val();
-  const urlToFetch = url + city + '&limit=20' + '&client_id=' + clientId + '&client_secret=' + clientSecret + '&v=20201121';
+  const urlToFetch = url + city + '&limit=10' + '&client_id=' + clientId + '&client_secret=' + clientSecret + '&v=20201125';
   try {
     const response = await fetch(urlToFetch);
     if (response.ok){
@@ -58,7 +99,7 @@ const getVenues = async () => {
 }
 
 const getForecast = async () => {
-  const urlToFetch = `${weatherUrl}?&q=${$input.val()}&APPID=${openWeatherKey}`;
+  const urlToFetch = `${weatherUrl}?&q=${$input.val()}&units=metric&APPID=${openWeatherKey}`;
   try {
     const response = await fetch(urlToFetch);
     if (response.ok){
