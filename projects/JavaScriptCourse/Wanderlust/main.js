@@ -26,14 +26,16 @@ const createVenueHTML = (name, location, iconSource) => {
     <p>${location.country}</p>`;
   }
   
-  // Call Celsius or Farenheit...hard coded :-(
+  
   const createWeatherHTML = (currentDay) => {
     // Set up some temprature variables we need...rounding them to a single digit
     const currentTemp = (currentDay.main.temp).toFixed(0);
     const minTemp = (currentDay.main.temp_min).toFixed(0);
     const maxTemp = (currentDay.main.temp_max).toFixed(0);
-    // Convert wind direction from degrees to a compass point 
-    // Convert String degrees to Number, then compare it... 
+
+    // Function to convert wind direction from degrees to a compass point:
+    // JSON returns a String for wind direction, need to convert it to Number, then compare it,
+    // returning a String representing the name of the compass heading
     const degNumber = parseInt(currentDay.wind.deg);
     const degreesToRose =  degNumber => {
         if (degNumber >= 0 && degNumber <= 29){
@@ -64,6 +66,7 @@ const createVenueHTML = (name, location, iconSource) => {
             return 'North';
         }      
       };
+      // This creates and returns the formatted data...
     return `<h2>${weekDays[(new Date()).getDay()]}</h2>
           <h2>Temperature: ${currentTemp}&deg;C</h2>
           <h2>Low: ${minTemp}&deg;C</h2>
@@ -74,9 +77,10 @@ const createVenueHTML = (name, location, iconSource) => {
           <h2>Visibility: ${currentDay.visibility} km</h2>
         <img src="https://openweathermap.org/img/wn/${currentDay.weather[0].icon}@2x.png">`;
   }
-  
- // const kelvinToFahrenheit = k => ((k - 273.15) * 9 / 5 + 32).toFixed(0);
-  // const kelvinToCelsius = k => (k - 273.15).toFixed(0);
+      // Not needed - orginally the services returned temp in Kelvin, but we can also call 
+      // it using "&units=metric" to get celsius & km/h etc...
+      // const kelvinToFahrenheit = k => ((k - 273.15) * 9 / 5 + 32).toFixed(0);
+      // const kelvinToCelsius = k => (k - 273.15).toFixed(0);
   
   // ------------------------------------------ End Helper Functions -------------------------
 
