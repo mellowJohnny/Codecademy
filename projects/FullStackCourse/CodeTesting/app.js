@@ -166,21 +166,3 @@ const isTheDinnerVegan = (food) => {
 
 */
 
-const dogFactory = (name,breed,weight) => {
-    get name(){
-        return this._name;
-      }
-      set name(newName){
-        this._name = newName;
-      }
-    
-    return {
-      _name: name,
-      _breed: breed,
-      _weight: weight
-    }
-    
-  
-  }
-  
-  console.log(dogFactory('ozzie','Wheaten Terrier','34'));
