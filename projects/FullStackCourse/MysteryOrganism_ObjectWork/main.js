@@ -107,8 +107,8 @@ const creation = (numToCreate) => {
 // ------------------------------------ TEST ----------------------------
 const dnaStrand1 = mockUpStrand();
 const dnaStrand2 = mockUpStrand();
-const newSpecimen1 = pAequorFactory(001,dnaStrand1);
-const newSpecimen2 = pAequorFactory(002,dnaStrand2);
+const newSpecimen1 = pAequorFactory(1,dnaStrand1);
+const newSpecimen2 = pAequorFactory(2,dnaStrand2);
 
 // newSpecimen1.mutate();
 newSpecimen1.compareDNA(newSpecimen2);
