@@ -7,4 +7,29 @@
     background-image: url("/Users/christian/Development/Codecademy/projects/FullStackCourse/ArtSupplyStore/images/pattern.jpeg");
 }
 
-/Users/christian/Development/Codecademy/projects/FullStackCourse/ArtSupplyStore/images/pattern.jpeg
+.products {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.product-highlight {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: blue;
+}
+
+#brushes-bg-colour {
+    background-color: mediumspringgreen;
+}
+
+#frames-bg-colour {
+    background-color: lightcoral;
+}
+
+#paint-bg-colour {
+    color: steelblue;
+    background-color: skyblue;
+    background-image: url("/Users/christian/Development/Codecademy/projects/FullStackCourse/ArtSupplyStore/images/animated-finnish-flag.gif");
+}
