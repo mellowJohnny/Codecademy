@@ -1,0 +1,31 @@
+body {
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
+    font-size: 50px;
+    color: cornsilk;
+    text-align: center;
+}
+
+.download-link {
+    color: aquamarine;
+    font-size: 16px;
+    text-align: center;
+}
+
+.image-eyebrow {
+    font-weight: 300;
+    font-size: 42px;
+}
+
+.image-captions {
+    font-size: 21;
+    font-size: 21px;
+    color: gray;
+}
+
+.copyright {
+    text-align: right;
+    color: gray;
+    font-size: 16px;
+}
