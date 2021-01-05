@@ -1,2 +1,2 @@
 # Codecademy
-Codecademy Projects
+Codecademy Projects & course work
