@@ -1,0 +1,12 @@
+{
+  "name": "codecademy_node_exercises",
+  "version": "1.0.0",
+  "description": "Codecademy Node.js exercises",
+  "main": "app.js",
+  "scripts": {
+    "start" : "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christian Couillard",
+  "license": "ISC"
+}
